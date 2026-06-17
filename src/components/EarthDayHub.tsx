@@ -155,32 +155,31 @@ export default function EarthDayHub() {
                 </div>
               </div>
 
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Rules of thumb for your slides</h3>
-                <p className="text-sm text-stone-500 mb-4">Defensible starting figures. Cite as estimates — underlying studies vary.</p>
-                <div className="bg-white rounded-lg border border-stone-200 overflow-hidden">
-                  <div className="divide-y divide-stone-100">
-                    {[
-                      { a: 'Storing 100 GB for one year', b: '~0.2 metric tons CO₂e', sub: 'U.S. grid average' },
-                      { a: 'Storing 1 TB for one year', b: '~2 metric tons CO₂e', sub: 'A full year of one employee\'s digital emissions' },
-                      { a: 'Spam email', b: '~0.3 g CO₂e', sub: 'Per message (Berners-Lee)' },
-                      { a: 'Standard text email', b: '~4 g CO₂e', sub: 'Per message' },
-                      { a: 'Email with large attachment', b: 'Up to 50 g CO₂e', sub: '≈ five plastic carrier bags' },
-                      { a: 'One-hour HD video call (2 people)', b: 'Up to ~2.3 kg CO₂e', sub: 'vs ~90 g if audio-only' },
-                      { a: 'Single Google search', b: '~0.2 g CO₂e', sub: '' },
-                      { a: 'Generative-AI chatbot query', b: '~0.03–3 g CO₂e', sub: 'Range across Google Gemini (2025) to older ChatGPT estimates' },
-                    ].map((r, i) => (
-                      <div key={i} className="px-5 py-3.5 flex items-center justify-between gap-4">
-                        <div>
-                          <div className="text-sm font-medium text-stone-900">{r.a}</div>
-                          {r.sub && <div className="text-xs text-stone-500 mt-0.5">{r.sub}</div>}
-                        </div>
-                        <div className="text-sm font-mono text-plum-700 flex-shrink-0 text-right">{r.b}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+             <div>
+  <h3 className="text-lg font-semibold mb-2">Rules of thumb for your slides</h3>
+  <p className="text-sm text-stone-500 mb-4">Defensible starting figures — storage is well-grounded; email and video are order-of-magnitude. Cite as estimates; studies vary.</p>
+  <div className="bg-white rounded-lg border border-stone-200 overflow-hidden">
+    <div className="divide-y divide-stone-100">
+      {[
+        { a: 'Storing 100 GB for one year', b: '~0.3–0.8 kg CO₂e', sub: 'U.S. grid average · operational + manufacturing' },
+        { a: 'Storing 1 TB for one year', b: '~3–8 kg CO₂e', sub: 'U.S. grid average · operational + manufacturing' },
+        { a: '10,000 accounts × 100 GB each', b: '~5 tonnes CO₂e / year', sub: 'At institutional scale — ~half never accessed again' },
+        { a: 'Spam email', b: '~0.3 g CO₂e', sub: 'Per message (Berners-Lee 2010)' },
+        { a: 'Standard text email', b: '~4 g CO₂e', sub: 'Per message (Berners-Lee 2010; 2020 ed. lower)' },
+        { a: 'Email with large attachment', b: 'Up to 50 g CO₂e', sub: '≈ five plastic carrier bags' },
+        { a: 'One-hour HD video call (2 people)', b: 'Up to ~1 kg CO₂e', sub: 'vs ~40 g audio-only; newer studies far lower' },
+      ].map((r, i) => (
+        <div key={i} className="px-5 py-3.5 flex items-center justify-between gap-4">
+          <div>
+            <div className="text-sm font-medium text-stone-900">{r.a}</div>
+            {r.sub && <div className="text-xs text-stone-500 mt-0.5">{r.sub}</div>}
+          </div>
+          <div className="text-sm font-mono text-plum-700 flex-shrink-0 text-right">{r.b}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
 
               <div className="bg-gradient-to-br from-plum-600 to-plum-700 text-white p-6 rounded-xl">
                 <div className="flex items-start gap-4">
