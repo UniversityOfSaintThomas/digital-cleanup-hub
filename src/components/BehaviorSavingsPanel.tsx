@@ -58,7 +58,7 @@ export default function BehaviorSavingsPanel() {
     <div className="bg-white p-6 rounded-xl border border-stone-200">
       <div className="flex items-center gap-2 mb-1">
         <Activity className="w-5 h-5 text-plum-600" />
-        <h3 className="text-lg font-semibold">Behavior savings (sends avoided)</h3>
+        <h3 className="text-lg font-semibold">Behavior Savings (avoided costs)</h3>
       </div>
       <p className="text-sm text-stone-500 mb-6">
         Usually a bigger lever than storage: not sending, and camera-off. These are
