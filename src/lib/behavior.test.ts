@@ -18,11 +18,11 @@ describe("behavior constants are sane", () => {
 });
 
 describe("email lever", () => {
-  it("10 emails/person/week for 1 person = 0.156-2.08 kg/yr", () => {
+  it("10 emails/person/week for 1 person = 0.0156-0.156 kg/yr", () => {
     const r = estimateBehaviorSavings({ emailsAvoidedPerWeek: 10 });
-    // 10 * 52 * 1 = 520 messages ; x0.3g/1000 = 0.156 ; x4g/1000 = 2.08
-    expect(r.breakdown.email.low).toBeCloseTo(0.156, 6);
-    expect(r.breakdown.email.high).toBeCloseTo(2.08, 6);
+    // 10 * 52 * 1 = 520 messages ; x0.03g/1000 = 0.0156 ; x0.3g/1000 = 0.156
+    expect(r.breakdown.email.low).toBeCloseTo(0.0156, 6);
+    expect(r.breakdown.email.high).toBeCloseTo(0.156, 6);
     expect(r.breakdown.video.low).toBe(0);
   });
 });

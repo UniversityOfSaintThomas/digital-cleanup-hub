@@ -67,7 +67,7 @@ export function estimateBehaviorSavings(input: BehaviorInput): BehaviorSavings {
     breakdown: { email, video },
     note:
       "Transmission/use estimates (email, video) are far less settled than storage \u2014 " +
-      "order-of-magnitude only. Email per Berners-Lee (How Bad Are Bananas?); video per Obringer " +
+      "order-of-magnitude only. Email per Berners-Lee (How Bad Are Bananas?, 2020 ed.); video per Obringer " +
       "et al. 2021 (newer studies are lower).",
   };
 }

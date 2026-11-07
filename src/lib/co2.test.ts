@@ -41,18 +41,18 @@ describe("formula: kg CO2e/yr = TB x R x (E_op x CI + Emb)", () => {
   });
 
   it("1 TB HDD at US-average grid uses documented central inputs", () => {
-    const r = estimateAnnualCO2({ storageTB: 1 }); // medium hdd, R=1, CI=0.40 by default
-    // 1 x 1 x (8 x 0.40 + 0.35) = 3.55
-    expect(r.central).toBeCloseTo(3.55, 10);
+    const r = estimateAnnualCO2({ storageTB: 1 }); // medium hdd, R=1, CI=0.35 by default
+    // 1 x 1 x (8 x 0.35 + 0.35) = 3.15
+    expect(r.central).toBeCloseTo(3.15, 10);
     expect(r.medium).toBe("hdd");
     expect(r.unit).toBe("kg CO2e/year");
   });
 
   it("low/high bound the central at the chosen grid intensity", () => {
     const r = estimateAnnualCO2({ storageTB: 1 });
-    // low  = (5 x 0.40 + 0.2) = 2.2 ; high = (15 x 0.40 + 0.5) = 6.5
-    expect(r.low).toBeCloseTo(2.2, 10);
-    expect(r.high).toBeCloseTo(6.5, 10);
+    // low  = (5 x 0.35 + 0.2) = 1.95 ; high = (15 x 0.35 + 0.5) = 5.75
+    expect(r.low).toBeCloseTo(1.95, 10);
+    expect(r.high).toBeCloseTo(5.75, 10);
     expect(r.low).toBeLessThanOrEqual(r.central as number);
     expect(r.central as number).toBeLessThanOrEqual(r.high);
   });
@@ -88,9 +88,9 @@ describe("SSD is range-only (no point estimate)", () => {
   it("returns central = null and a range = HDD bounds x SSD multiplier", () => {
     const r = estimateAnnualCO2({ storageTB: 1, medium: "ssd" });
     expect(r.central).toBeNull();
-    // hddLow 2.2 x 2 = 4.4 ; hddHigh 6.5 x 6 = 39.0
-    expect(r.low).toBeCloseTo(4.4, 10);
-    expect(r.high).toBeCloseTo(39.0, 10);
+    // hddLow 1.95 x 2 = 3.9 ; hddHigh 5.75 x 6 = 34.5
+    expect(r.low).toBeCloseTo(3.9, 10);
+    expect(r.high).toBeCloseTo(34.5, 10);
     expect(r.high).toBeGreaterThan(r.low);
     expect(r.note).toMatch(/SSD/);
   });

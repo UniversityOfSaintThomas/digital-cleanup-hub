@@ -28,7 +28,7 @@ const MEDIA_OPTIONS: Option<StorageMedium>[] = [
   { key: "ssd", label: "SSD (hot tier)", hint: "Embodied carbon dominates and is uncertain — range only." },
 ];
 const GRID_OPTIONS: Option<GridKey>[] = [
-  { key: "usAverage", label: "U.S. average", hint: "~0.40 kg CO\u2082e/kWh (EPA eGRID / OWID)" },
+  { key: "usAverage", label: "U.S. average", hint: "~0.35 kg CO\u2082e/kWh (EPA eGRID 2023)" },
   { key: "dataCenterWeighted", label: "Where data centers sit", hint: "~0.55 kg/kWh (Guidi et al. 2024)" },
   { key: "renewableMatched", label: "Renewable-matched", hint: "~0.05 kg/kWh provider" },
 ];

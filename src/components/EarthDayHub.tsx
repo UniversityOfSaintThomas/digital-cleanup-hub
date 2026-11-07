@@ -117,20 +117,20 @@ export default function EarthDayHub() {
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <div className="bg-white p-5 rounded-lg border border-stone-200">
-                  <div className="text-2xl font-semibold text-stone-900">1–1.5%</div>
-                  <div className="text-xs text-stone-500 mt-1">Global electricity from data centers (IEA)</div>
+                  <div className="text-2xl font-semibold text-stone-900">~1.5%</div>
+                  <div className="text-xs text-stone-500 mt-1">Global electricity used by data centers in 2025 — 485 TWh (IEA, 2026)</div>
                 </div>
                 <div className="bg-white p-5 rounded-lg border border-stone-200">
-                  <div className="text-2xl font-semibold text-stone-900">2–3.7%</div>
-                  <div className="text-xs text-stone-500 mt-1">Global GHG emissions incl. full ICT sector</div>
+                  <div className="text-2xl font-semibold text-stone-900">1.8–3.9%</div>
+                  <div className="text-xs text-stone-500 mt-1">Global GHG emissions from the full ICT sector (Freitag et al. 2021)</div>
                 </div>
                 <div className="bg-white p-5 rounded-lg border border-stone-200">
                   <div className="text-2xl font-semibold text-stone-900">~2×</div>
-                  <div className="text-xs text-stone-500 mt-1">Projected growth in data center energy by 2026</div>
+                  <div className="text-xs text-stone-500 mt-1">Projected data center electricity by 2030: 485 → ~950 TWh (IEA, 2026)</div>
                 </div>
                 <div className="bg-plum-600 text-white p-5 rounded-lg">
                   <div className="text-2xl font-semibold">&gt;50%</div>
-                  <div className="text-xs text-plum-50 mt-1">Of stored data is never used again ("dark data")</div>
+                  <div className="text-xs text-plum-50 mt-1">Of stored organizational data is never used again ("dark data," Veritas)</div>
                 </div>
               </div>
 
@@ -140,7 +140,7 @@ export default function EarthDayHub() {
                   {[
                     { num: '1', color: 'bg-amber-100 text-amber-700', title: 'Operational electricity', body: 'Power for servers, storage, networking, and cooling. Depends heavily on the local grid — a query routed to hydro-powered Norway has a dramatically lower footprint than one routed to a coal-heavy grid.' },
                     { num: '2', color: 'bg-rose-100 text-rose-700', title: 'Embodied carbon', body: 'Emissions from manufacturing hardware. Per the iMasons Climate Accord (Jan 2026), this now accounts for 40–50% of a data center\'s lifetime emissions as grids decarbonize.' },
-                    { num: '3', color: 'bg-sky-100 text-sky-700', title: 'Water consumption', body: 'Chilled water for cooling. Some U.S. facilities use 3–5 million gallons per day — comparable to a city of 30,000–50,000 people. Increasingly controversial in drought-affected regions.' },
+                    { num: '3', color: 'bg-sky-100 text-sky-700', title: 'Water consumption', body: 'Chilled water for cooling. Large facilities can use up to 5 million gallons per day — the water use of a town of 10,000–50,000 people (EESI, 2025). Increasingly controversial in drought-affected regions.' },
                   ].map((d) => (
                     <div key={d.num} className="bg-white p-5 rounded-lg border border-stone-200">
                       <div className="flex items-start gap-4">
@@ -161,12 +161,12 @@ export default function EarthDayHub() {
   <div className="bg-white rounded-lg border border-stone-200 overflow-hidden">
     <div className="divide-y divide-stone-100">
       {[
-        { a: 'Storing 100 GB for one year', b: '~0.3–0.8 kg CO₂e', sub: 'U.S. grid average · operational + manufacturing' },
-        { a: 'Storing 1 TB for one year', b: '~3–8 kg CO₂e', sub: 'U.S. grid average · operational + manufacturing' },
-        { a: '10,000 accounts × 100 GB each', b: '~5 tonnes CO₂e / year', sub: 'At institutional scale — ~half never accessed again' },
-        { a: 'Spam email', b: '~0.3 g CO₂e', sub: 'Per message (Berners-Lee 2010)' },
-        { a: 'Standard text email', b: '~4 g CO₂e', sub: 'Per message (Berners-Lee 2010; 2020 ed. lower)' },
-        { a: 'Email with large attachment', b: 'Up to 50 g CO₂e', sub: '≈ five plastic carrier bags' },
+        { a: 'Storing 100 GB for one year', b: '~0.3–0.8 kg CO₂e', sub: 'U.S. grids · operational + manufacturing' },
+        { a: 'Storing 1 TB for one year', b: '~3–8 kg CO₂e', sub: 'U.S. grids · operational + manufacturing' },
+        { a: '10,000 accounts × 100 GB each', b: '~3–5 tonnes CO₂e / year', sub: 'At institutional scale — ~half never accessed again' },
+        { a: 'Spam email (caught by filter)', b: '~0.03 g CO₂e', sub: 'Per message (Berners-Lee 2020)' },
+        { a: 'Short email', b: '~0.2–0.3 g CO₂e', sub: 'Phone vs laptop (Berners-Lee 2020; replaces the old 4 g)' },
+        { a: 'Long email / blast to 100 people', b: '~17–26 g CO₂e', sub: 'Mostly device time writing and reading (Berners-Lee 2020)' },
         { a: 'One-hour HD video call (2 people)', b: 'Up to ~1 kg CO₂e', sub: 'vs ~40 g audio-only; newer studies far lower' },
       ].map((r, i) => (
         <div key={i} className="px-5 py-3.5 flex items-center justify-between gap-4">
@@ -187,7 +187,7 @@ export default function EarthDayHub() {
                   <div>
                     <h3 className="font-semibold text-lg mb-2">The "dark data" problem</h3>
                     <p className="text-plum-50 text-sm leading-relaxed mb-3">
-                      More than half of data collected by typical organizations is collected, processed, and never used again. Globally, dark data generates an estimated <span className="font-semibold text-white">5.8 million tonnes of CO₂ per year — roughly 1.2 million cars.</span>
+                      More than half of data collected by typical organizations is collected, processed, and never used again. Globally, dark data was estimated to generate <span className="font-semibold text-white">5.8 million tonnes of CO₂ per year — roughly 1.2 million cars</span> (Veritas, 2020).
                     </p>
                     <p className="text-plum-100 text-sm leading-relaxed">
                       This is your single most powerful workshop framing: most of what we store we never touch again, but it keeps drawing power 24/7 and driving demand for new hardware. Deleting it costs nothing and actually makes digital life better.
@@ -239,14 +239,14 @@ export default function EarthDayHub() {
                   gotchas={[
                     'Archiving ≠ deleting. Archives still store data; for carbon, deletion is stronger.',
                     'Mailing-list bloat: a message to 500 people is stored 500 times.',
-                    'A single email with a 10 MB attachment ≈ the footprint of 12 text-only emails.',
+                    'A 10 MB attachment sent to 20 people is ~200 MB of mailbox storage. Share a link instead.',
                   ]}
                   workflow={[
-                    { title: 'Sort by size', detail: 'View → Arrange By → Size. Delete the top 20 largest messages you no longer need.' },
+                    { title: 'Find what\'s biggest', detail: 'New Outlook: Settings → Accounts → Storage shows space per folder. Classic Outlook: View → Arrange By → Size. Delete the largest messages you no longer need.' },
                     { title: 'Search old attachments', detail: 'folder:inbox AND hasattachments:yes AND received:<1/1/2024' },
                     { title: 'Unsubscribe (don\'t delete)', detail: 'Use the Unsubscribe link Outlook surfaces at the top of promotional mail.' },
                     { title: 'Empty Deleted Items and Junk', detail: 'Right-click each folder → Empty Folder.' },
-                    { title: 'Set AutoArchive', detail: 'File → Options → Advanced → AutoArchive so it doesn\'t accumulate again.' },
+                    { title: 'Keep it from piling up', detail: 'New Outlook has no AutoArchive. Use Settings → Accounts → Storage to delete items older than 3, 6, or 12 months, or (on the web) right-click a folder → Assign policy if IT has enabled archive policies. Classic Outlook: File → Options → Advanced → AutoArchive Settings.' },
                   ]}
                   timeEstimate="15 minutes"
                 />
@@ -304,7 +304,7 @@ export default function EarthDayHub() {
                 <PlatformCard
                   title="Canvas LMS"
                   counts={[
-                    'Each Canvas course has a 2 GB file quota by default (configurable per institution)',
+                    'Each Canvas course has a 500 MB file quota by default (admins can raise it)',
                     'Personal Files ("My Files") has its own quota, often ~50 MB',
                     'Course copies duplicate every file — 10 sections of a 1.5 GB course = 15 GB',
                     'Canvas Studio recordings count against quota; Panopto embeds do not',
@@ -422,9 +422,9 @@ export default function EarthDayHub() {
                 <p className="text-sm text-stone-400 mb-5">Quick mental math — and a reminder of where the carbon actually is.</p>
                 <div className="space-y-4 font-mono text-sm">
                   {[
-                    { label: 'STORAGE', note: '≈ 3–8 kg CO₂e per TB·year (operational + amortized manufacturing, grid ~0.4 kg/kWh).', highlight: '1 TB ≈ 3–8 kg · 100 GB ≈ 0.3–0.8 kg.' },
-                    { label: 'AT SCALE', note: 'Per person it’s small; per institution it adds up.', highlight: '10,000 accounts × 100 GB ≈ 5 tonnes/year — ~half never accessed again.' },
-                    { label: 'EMAIL', note: 'Storing mail is negligible. The ~4 g often quoted is the cost of sending one (device + network) — already spent.', highlight: 'Lever: send less, unsubscribe, skip Reply-All.' },
+                    { label: 'STORAGE', note: '≈ 3–8 kg CO₂e per TB·year (operational + amortized manufacturing, grid ~0.35–0.55 kg/kWh).', highlight: '1 TB ≈ 3–8 kg · 100 GB ≈ 0.3–0.8 kg.' },
+                    { label: 'AT SCALE', note: 'Per person it’s small; per institution it adds up.', highlight: '10,000 accounts × 100 GB ≈ 3–5 tonnes/year — ~half never accessed again.' },
+                    { label: 'EMAIL', note: 'Storing mail is negligible. The old ~4 g figure (2010) is now ~0.3 g for a short email (2020) — and it\'s spent at send time.', highlight: 'Lever: send less, unsubscribe, skip Reply-All.' },
                     { label: 'VIDEO', note: 'Recordings barely cost anything to store (~1 GB/hr). The carbon is in streaming & recording; 1 hr audio ≈ 4% of HD video.', highlight: 'Lever: don’t record what won’t be rewatched.' },
                     { label: 'PHOTOS', note: '25 GB of duplicates ≈ ~0.1 kg/year to store — tiny each, but it’s disk that had to be manufactured.', highlight: 'Lever: trim duplicates; the win is less storage hardware at scale.' },
                   ].map((f, i, arr) => (
@@ -556,7 +556,7 @@ export default function EarthDayHub() {
                   <div>
                     <h3 className="font-semibold text-plum-900 mb-1">Tie it to Digital Cleanup Day</h3>
                     <p className="text-sm text-plum-800 leading-relaxed">
-                      Join the global initiative by Let's Do It World. The 2023 campaign saw 380,000+ participants across 105 countries delete 12.7 million GB — preventing an estimated 1,742 tonnes of CO₂. Joining a recognized effort gives credibility, promotional assets, and peer benchmarks.
+                      Join the global initiative by Let's Do It World. The 2026 campaign saw 386,000 participants across 44 countries delete 2.3 million GB — an estimated 932 tonnes of CO₂ avoided per year (organizers' estimate, using a higher per-GB factor than this hub). Joining a recognized effort gives credibility, promotional assets, and peer benchmarks.
                     </p>
                   </div>
                 </div>
@@ -612,7 +612,7 @@ export default function EarthDayHub() {
                   <TemplateCard
                     title="Pre-event invitation"
                     subject="Earth Day 2026: Clean your cloud, cut your carbon"
-                    body={`Hi [Name],\n\nFor Earth Day this year, we're hosting a 90-minute Data Detox workshop — a hands-on session where you'll clean up your cloud storage and see the carbon impact in real time.\n\nWhen: [Date, Time]\nWhere: [Location / Zoom link]\nBring: A laptop and your university credentials\n\nYou don't need to pre-clean anything. The live session is designed to walk you through Outlook, OneDrive, Teams, Zoom, and Panopto in order. Expect to reclaim several GB in the first 30 minutes.\n\nDid you know? Over half of the data organizations store is never used again — but it keeps drawing power 24/7. Globally, that "dark data" generates 5.8 million tonnes of CO₂ per year, roughly equivalent to 1.2 million cars.\n\nRegister here: [Link]\n\n[Your name]`}
+                    body={`Hi [Name],\n\nFor Earth Day this year, we're hosting a one-hour Data Detox workshop — a hands-on session where you'll clean up your cloud storage and see the carbon impact in real time.\n\nWhen: [Date, Time]\nWhere: [Location / Zoom link]\nBring: A laptop and your university credentials\n\nYou don't need to pre-clean anything. The live session is designed to walk you through Outlook, OneDrive, Teams, Zoom, and Panopto in order. Expect to reclaim several GB in the first 30 minutes.\n\nDid you know? Over half of the data organizations store is never used again — but it keeps drawing power 24/7. Globally, that "dark data" generates 5.8 million tonnes of CO₂ per year, roughly equivalent to 1.2 million cars.\n\nRegister here: [Link]\n\n[Your name]`}
                     onCopy={handleCopy}
                     id="invite"
                     copied={copied}

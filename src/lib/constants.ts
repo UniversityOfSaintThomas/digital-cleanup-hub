@@ -21,15 +21,15 @@ export const OPERATIONAL_ENERGY_KWH_PER_TB_YR = {
 
 /**
  * Grid carbon intensity. kg CO2e/kWh. A real lever, not a fixed constant.
- * Basis: US grid average ~0.38-0.40 (EPA eGRID / OWID); data-center-weighted ~0.55
- * (Guidi et al. 2024); ~0.05 for a renewable-matched provider.
+ * Basis: US grid average 0.35 (EPA eGRID2023, released 2025: 770.9 lb CO2e/MWh; OWID ~0.37);
+ * data-center-weighted ~0.55 (Guidi et al. 2024); ~0.05 for a renewable-matched provider.
  */
 export const CARBON_INTENSITY_KG_PER_KWH = {
-  default: 0.4,
+  default: 0.35,
   min: 0.05,
   max: 0.7,
   presets: {
-    usAverage: 0.4,
+    usAverage: 0.35,
     dataCenterWeighted: 0.55,
     renewableMatched: 0.05,
   },
@@ -75,7 +75,7 @@ export const SSD_MULTIPLIER = {
  * Used as a drift guard in tests: the computed per-TB central must stay within [low, high].
  */
 export const HEADLINE_KG_PER_TB_YR = {
-  central: 5,
+  central: 4,
   low: 3,
   high: 8,
 } as const;

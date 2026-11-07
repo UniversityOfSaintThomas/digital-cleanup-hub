@@ -9,12 +9,13 @@
 
 /**
  * EMAIL — footprint of SENDING one message (device + network + some data center). grams CO2e.
- * Berners-Lee, "How Bad Are Bananas?" (2010): spam 0.3 g, standard 4 g, large attachment ~50 g.
- * The 2020 2nd edition revised the per-email range DOWN to ~0.03-26 g (more efficient devices /
- * data centers). The author himself warns against using these figures too precisely. We use the
- * 0.3-4 g band (unread/short -> standard) as a conservative, defensible lever range.
+ * Berners-Lee, "How Bad Are Bananas?" 2nd ed. (2020), which supersedes the 2010 figures (4 g
+ * standard / 50 g attachment): spam caught by filters 0.03 g, short email phone 0.2 g / laptop
+ * 0.3 g, long email (10 min to write) 17 g, blast to 100 people 26 g. The long-email figures are
+ * mostly the sender's/reader's device time, not the send itself. The emails this lever avoids are
+ * short (unsubscribes, skipped Reply-All, one-liners), so we use the 0.03-0.3 g band.
  */
-export const EMAIL_G_PER_MESSAGE = { low: 0.3, high: 4 } as const;
+export const EMAIL_G_PER_MESSAGE = { low: 0.03, high: 0.3 } as const;
 
 /**
  * VIDEO CALL — footprint per hour of a camera-on call. grams CO2e/hour.

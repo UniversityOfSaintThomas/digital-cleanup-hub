@@ -64,6 +64,7 @@ storage-math bug (2 kg/GB). The live component is `src/components/EarthDayHub.ts
 | Pushed to org + personal repos | ✅ |
 | **Live and loading on org repo** | ✅ |
 | Calculator rebuilt: audited engine + behavior panel + tests | ✅ |
+| Nov 2026 figure refresh (IEA 2026, eGRID2023, email 2020 ed., DCD 2026, new-Outlook steps) | ✅ |
 
 ---
 
