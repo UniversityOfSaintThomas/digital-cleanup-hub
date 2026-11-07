@@ -126,7 +126,7 @@ export default function EarthDayHub() {
                 </div>
                 <div className="bg-white p-5 rounded-lg border border-stone-200">
                   <div className="text-2xl font-semibold text-stone-900">~2×</div>
-                  <div className="text-xs text-stone-500 mt-1">Projected data center electricity by 2030: 485 → ~950 TWh (IEA, 2026)</div>
+                  <div className="text-xs text-stone-500 mt-1">Projected data center electricity by 2030: 485 → ~945 TWh (IEA, 2026)</div>
                 </div>
                 <div className="bg-plum-600 text-white p-5 rounded-lg">
                   <div className="text-2xl font-semibold">&gt;50%</div>

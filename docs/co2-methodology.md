@@ -134,7 +134,7 @@ Not used by the calculators; listed so they can be re-checked each year.
 
 | Figure on site | Source |
 |---|---|
-| Data centers ≈ 1.5% of global electricity, 485 TWh in 2025; ~950 TWh by 2030 | IEA (2026), *Key Questions on Energy and AI*, https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary |
+| Data centers ≈ 1.5% of global electricity, 485 TWh in 2025; ~945 TWh by 2030 | IEA (2026), *Key Questions on Energy and AI*, https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary |
 | ICT sector 1.8–3.9% of global GHG emissions | Freitag, C., et al. (2021). *The real climate and transformative impact of ICT.* Patterns 2(9). arXiv:2102.02622 |
 | Large data centers use up to 5 million gal/day ≈ a town of 10,000–50,000 | EESI (June 2025), *Data Centers and Water Consumption*, https://www.eesi.org/articles/view/data-centers-and-water-consumption |
 | ~52% of stored organizational data is "dark"; 5.8 Mt CO₂ in 2020 | Veritas Technologies (2020), vendor estimate — no newer primary figure found |
