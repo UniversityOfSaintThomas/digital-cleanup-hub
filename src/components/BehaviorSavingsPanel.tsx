@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useId, useMemo, useState, type ReactNode } from "react";
 import { Activity, Info } from "lucide-react";
 import { estimateBehaviorSavings } from "../lib/behavior";
 
@@ -55,12 +55,12 @@ export default function BehaviorSavingsPanel() {
   const total = rangeDisplay(r.low, r.high);
 
   return (
-    <div className="bg-white p-6 rounded-xl border border-stone-200">
+    <div className="bg-white p-6 md:p-8 rounded-2xl">
       <div className="flex items-center gap-2 mb-1">
-        <Activity className="w-5 h-5 text-plum-600" />
-        <h3 className="text-lg font-semibold">Behavior Savings (avoided costs)</h3>
+        <Activity className="w-5 h-5 text-plum-600" aria-hidden="true" />
+        <h3 className="text-xl font-bold tracking-tight">Behavior Savings (avoided costs)</h3>
       </div>
-      <p className="text-sm text-stone-500 mb-6">
+      <p className="text-sm text-muted mb-6">
         Usually a bigger lever than storage: not sending, and camera-off. These are
         transmission/use estimates &mdash; rougher than storage, so shown as a wide range.
       </p>
@@ -70,8 +70,8 @@ export default function BehaviorSavingsPanel() {
 
       {/* Institutional multiplier */}
       <div className="mt-2 mb-6">
-        <div className="text-sm font-medium text-stone-700 mb-2">Scale</div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="text-sm font-medium text-ink mb-2">Scale</div>
+        <div role="group" aria-label="Scale" className="flex flex-wrap items-center gap-2">
           <PillButton active={!institution} onClick={() => setInstitution(false)}>Just me</PillButton>
           <PillButton active={institution} onClick={() => setInstitution(true)}>Whole institution</PillButton>
           {institution && (
@@ -81,27 +81,27 @@ export default function BehaviorSavingsPanel() {
                 min={1}
                 value={accounts}
                 onChange={(e) => setAccounts(Math.max(1, parseInt(e.target.value || "1", 10)))}
-                className="w-28 px-2 py-1.5 rounded-lg border border-stone-200 text-sm font-mono"
+                className="w-28 px-3 py-2 rounded-lg border border-line bg-white text-sm tabular-nums"
                 aria-label="Number of people"
               />
-              <span className="text-xs text-stone-500">people</span>
+              <span className="text-xs text-muted">people</span>
             </>
           )}
         </div>
       </div>
 
       {/* Result */}
-      <div className="pt-5 border-t border-stone-100">
-        <div className="text-xs text-stone-500 uppercase tracking-wide">Estimated avoided / year</div>
-        <div className="text-3xl font-semibold text-plum-700 mt-1">
-          {total.text} <span className="text-lg text-stone-500 font-normal">{total.unit}</span>
+      <div className="pt-5 border-t border-tone">
+        <div className="text-sm font-bold text-ink">Estimated avoided / year</div>
+        <div className="text-3xl font-bold text-plum-700 mt-1">
+          {total.text} <span className="text-lg text-muted font-normal">{total.unit}</span>
         </div>
-        <div className="text-sm text-stone-500 mt-1">
+        <div className="text-sm text-muted mt-1">
           email {kgRange(r.breakdown.email.low, r.breakdown.email.high)} &middot; camera-off{" "}
           {kgRange(r.breakdown.video.low, r.breakdown.video.high)}
         </div>
-        <div className="flex items-start gap-2 mt-4 text-xs text-stone-500">
-          <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
+        <div className="flex items-start gap-2 mt-4 text-xs text-muted">
+          <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" aria-hidden="true" />
           <span>
             {r.note}{" "}
             <a href={METHODOLOGY_URL} target="_blank" rel="noreferrer" className="underline hover:text-plum-600">
@@ -129,16 +129,18 @@ function Slider({
   suffix?: string;
   onChange: (n: number) => void;
 }) {
+  const id = useId();
   return (
     <div className="mb-4">
       <div className="flex justify-between items-baseline mb-2">
-        <label className="text-sm font-medium text-stone-700">{label}</label>
-        <span className="text-sm font-mono text-stone-500">
+        <label htmlFor={id} className="text-sm font-medium text-ink">{label}</label>
+        <span className="text-sm tabular-nums text-muted">
           {value}
           {suffix ?? ""}
         </span>
       </div>
       <input
+        id={id}
         type="range"
         min={min}
         max={max}
@@ -157,8 +159,8 @@ function PillButton({ active, onClick, children }: { active: boolean; onClick: (
       onClick={onClick}
       aria-pressed={active}
       className={
-        "px-3 py-1.5 rounded-lg text-sm border transition-colors " +
-        (active ? "bg-plum-600 text-white border-plum-600" : "bg-white text-stone-600 border-stone-200 hover:border-plum-300")
+        "px-3.5 py-2 rounded-full text-sm border transition-colors " +
+        (active ? "bg-plum-700 text-white border-plum-700" : "bg-tone text-ink border-transparent hover:bg-plum-100")
       }
     >
       {children}

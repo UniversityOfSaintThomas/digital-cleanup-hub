@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-ground text-ink antialiased; }
+  :focus-visible { outline: 2px solid #8348ad; outline-offset: 2px; border-radius: 6px; }
+  footer :focus-visible, .on-plum :focus-visible { outline-color: #ffffff; }
+}
+
+/* One user-triggered motion: the new section settles in when you switch tabs. */
+@keyframes section-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.section-in { animation: section-in 220ms ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .section-in { animation: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

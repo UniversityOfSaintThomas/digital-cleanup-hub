@@ -95,12 +95,12 @@ export default function StorageImpactCalculator() {
   const headline = est.central ?? est.high;
 
   return (
-    <div className="bg-white p-6 rounded-xl border border-stone-200">
+    <div className="bg-white p-6 md:p-8 rounded-2xl">
       <div className="flex items-center gap-2 mb-1">
-        <Calculator className="w-5 h-5 text-plum-600" />
-        <h3 className="text-lg font-semibold">Storage footprint estimator</h3>
+        <Calculator className="w-5 h-5 text-plum-600" aria-hidden="true" />
+        <h3 className="text-xl font-bold tracking-tight">Storage footprint estimator</h3>
       </div>
-      <p className="text-sm text-stone-500 mb-6">
+      <p className="text-sm text-muted mb-6">
         Operational energy + cooling + amortized manufacturing, per year of retention. Shown as a
         range on purpose &mdash; there is no single exact figure. Excludes transfer &amp; access.
       </p>
@@ -108,14 +108,15 @@ export default function StorageImpactCalculator() {
       {/* Storage slider */}
       <div className="mb-6">
         <div className="flex justify-between items-baseline mb-2">
-          <label className="text-sm font-medium text-stone-700">
+          <label htmlFor="storage-gb" className="text-sm font-medium text-ink">
             Cloud storage{institution ? " / account" : ""}
           </label>
-          <span className="text-sm font-mono text-stone-500">
+          <span className="text-sm tabular-nums text-muted">
             {gb} GB{gb >= 1000 ? ` \u00B7 ${(gb / 1000).toFixed(2)} TB` : ""}
           </span>
         </div>
         <input
+          id="storage-gb"
           type="range"
           min={0}
           max={2000}
@@ -134,8 +135,8 @@ export default function StorageImpactCalculator() {
 
         {/* Institutional multiplier */}
         <div>
-          <div className="text-sm font-medium text-stone-700 mb-2">Scale</div>
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="text-sm font-medium text-ink mb-2">Scale</div>
+          <div role="group" aria-label="Scale" className="flex flex-wrap items-center gap-2">
             <PillButton active={!institution} onClick={() => setInstitution(false)}>Just me</PillButton>
             <PillButton active={institution} onClick={() => setInstitution(true)}>Whole institution</PillButton>
             {institution && (
@@ -145,10 +146,10 @@ export default function StorageImpactCalculator() {
                   min={1}
                   value={accounts}
                   onChange={(e) => setAccounts(Math.max(1, parseInt(e.target.value || "1", 10)))}
-                  className="w-28 px-2 py-1.5 rounded-lg border border-stone-200 text-sm font-mono"
+                  className="w-28 px-3 py-2 rounded-lg border border-line bg-white text-sm tabular-nums"
                   aria-label="Number of accounts"
                 />
-                <span className="text-xs text-stone-500">accounts</span>
+                <span className="text-xs text-muted">accounts</span>
               </>
             )}
           </div>
@@ -156,40 +157,40 @@ export default function StorageImpactCalculator() {
       </div>
 
       {/* Result */}
-      <div className="pt-5 border-t border-stone-100">
-        <div className="text-xs text-stone-500 uppercase tracking-wide">Estimated footprint</div>
+      <div className="pt-5 border-t border-tone">
+        <div className="text-sm font-bold text-ink">Estimated footprint</div>
 
         {est.central != null ? (
           <>
-            <div className="text-3xl font-semibold text-plum-700 mt-1">
+            <div className="text-3xl font-bold text-plum-700 mt-1">
               {splitMass(est.central).value}{" "}
-              <span className="text-lg text-stone-500 font-normal">{splitMass(est.central).unit}</span>
+              <span className="text-lg text-muted font-normal">{splitMass(est.central).unit}</span>
             </div>
-            <div className="text-sm text-stone-500 mt-1">
+            <div className="text-sm text-muted mt-1">
               range {rangeStr(est.low, est.high)} &middot; {equiv(headline)}
             </div>
           </>
         ) : (
           <>
-            <div className="text-3xl font-semibold text-plum-700 mt-1">
+            <div className="text-3xl font-bold text-plum-700 mt-1">
               {rangeStr(est.low, est.high)}{" "}
-              <span className="text-lg text-stone-500 font-normal">CO&#8322;e / year</span>
+              <span className="text-lg text-muted font-normal">CO&#8322;e / year</span>
             </div>
-            <div className="text-sm text-stone-500 mt-1">
+            <div className="text-sm text-muted mt-1">
               range only (no single defensible SSD value) &middot; {equiv(headline)}
             </div>
           </>
         )}
 
         {institution && est.central != null && (
-          <div className="text-xs text-stone-400 mt-1">
+          <div className="text-xs text-muted mt-1">
             {splitMass(est.central / people).value} {splitMass(est.central / people).unit} per account
             {" \u00B7 "}roughly half of stored data is typically never accessed again.
           </div>
         )}
 
-        <div className="flex items-start gap-2 mt-4 text-xs text-stone-500">
-          <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
+        <div className="flex items-start gap-2 mt-4 text-xs text-muted">
+          <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" aria-hidden="true" />
           <span>
             {est.note}{" "}
             <a href={METHODOLOGY_URL} target="_blank" rel="noreferrer" className="underline hover:text-plum-600">
@@ -209,8 +210,8 @@ function PillButton({ active, onClick, children }: { active: boolean; onClick: (
       onClick={onClick}
       aria-pressed={active}
       className={
-        "px-3 py-1.5 rounded-lg text-sm border transition-colors " +
-        (active ? "bg-plum-600 text-white border-plum-600" : "bg-white text-stone-600 border-stone-200 hover:border-plum-300")
+        "px-3.5 py-2 rounded-full text-sm border transition-colors " +
+        (active ? "bg-plum-700 text-white border-plum-700" : "bg-tone text-ink border-transparent hover:bg-plum-100")
       }
     >
       {children}
@@ -231,8 +232,8 @@ function ToggleRow<K extends string>({
 }) {
   return (
     <div>
-      <div className="text-sm font-medium text-stone-700 mb-2">{label}</div>
-      <div className="flex flex-wrap gap-2">
+      <div className="text-sm font-medium text-ink mb-2">{label}</div>
+      <div role="group" aria-label={label} className="flex flex-wrap gap-2">
         {options.map((o) => (
           <PillButton key={o.key} active={o.key === value} onClick={() => onChange(o.key)}>
             <span title={o.hint}>{o.label}</span>
